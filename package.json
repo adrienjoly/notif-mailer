@@ -4,15 +4,17 @@
   "description": "Service that sends notification emails, from a Firebase queue.",
   "main": "run.js",
   "engines": {
-    "node": "0.12.9",
-    "npm": "2.14.9"
+    "node": "6.6.0",
+    "npm": "3.10.3"
   },
   "dependencies": {
+    "async": "^2.2.0",
+    "firebase": "^3.7.4",
     "sendgrid": "^2.0.0"
   },
   "scripts": {
     "start": "node run.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "author": "Adrien Joly <contact@adrienjoly.com>",
   "license": "MIT",
