@@ -1,21 +1,15 @@
 {
-  "name": "wunderlist-report",
+  "name": "notif-mailer",
   "version": "0.2.0",
-  "description": "Congratulates you every evening by email for all the Wunderlist tasks that you checked during the day.",
+  "description": "Service that sends notification emails, from a Firebase queue.",
   "main": "run.js",
   "engines": {
     "node": "0.12.9",
     "npm": "2.14.9"
   },
   "dependencies": {
-    "async": "1.5.0",
-    "express": "4.13.3",
-    "lodash": "3.10.1",
-    "request": "2.64.0",
-    "sendgrid": "^2.0.0",
-    "wunderlist": "0.1.2"
+    "sendgrid": "^2.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "node run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,17 +18,17 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adrienjoly/wunderlist-report.git"
+    "url": "git+https://github.com/adrienjoly/notif-mailer.git"
   },
   "keywords": [
-    "productivity",
-    "motivation",
-    "daily",
-    "script",
-    "wunderlist"
+    "notifications",
+    "server",
+    "cron",
+    "queue",
+    "firebase"
   ],
   "bugs": {
-    "url": "https://github.com/adrienjoly/wunderlist-report/issues"
+    "url": "https://github.com/adrienjoly/notif-mailer/issues"
   },
-  "homepage": "https://github.com/adrienjoly/wunderlist-report#readme"
+  "homepage": "https://github.com/adrienjoly/notif-mailer#readme"
 }
