@@ -32,3 +32,26 @@ I wrote this script for the "Clear" project.
 ## Optional environment variables
 
 - `FIREBASE_DATA_PATH`: Path in which your emails are stored. Default value: `/`.
+
+## Model of emails in Firebase
+
+When `FIREBASE_DATA_PATH` is set as `/emailNotifs`, the `test-sample-emails` will populate your Firebase Database like this:
+
+```json
+{
+  "emailNotifs" : {
+    "-Kh2jS_-AQvh-_GgUDyh" : {
+      "subject" : "fake email 1",
+      "text" : "should be sent now",
+      "when" : 1491490167102
+    },
+    "-Kh2jSs_htKipIGCIVL7" : {
+      "subject" : "fake email 2",
+      "text" : "should be sent in 5 seconds or more",
+      "when" : 1491490172102
+    }
+  }
+}
+```
+
+The `when` property of each email object is a date-time serialized in milliseconds.
