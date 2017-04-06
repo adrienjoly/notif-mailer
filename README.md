@@ -29,3 +29,7 @@ I wrote this script for the "Clear" project.
 - `SENDGRID_API_KEY`: [API key provided by Sendgrid](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) after creating your account
 - `EMAIL_FROM`: Email address from which daily emails will be sent
 - `EMAIL_TO`: Email address of the recipient (i.e. you, I guess)
+
+## Optional environment variables
+
+- `FIREBASE_DATA_PATH`: Path in which your emails are stored. Default value: `/`.

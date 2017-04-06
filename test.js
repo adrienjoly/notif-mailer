@@ -6,13 +6,15 @@ var firebaseConfig = {
   databaseURL: process.env.FIREBASE_DATA_URL,
 }
 
+const path = process.env.FIREBASE_DATA_PATH || '/'
+
 // helpers
 
-function forEachSubmission(handler, callback) {
+function forEachSubmission(path, handler, callback) {
   var q = async.queue(handler, 1) // handler(task, callnext) will be called for each child
   //q.push({name: 'foo', code1: 'console.log("test", 666)'}) // for testing
   firebase.initializeApp(firebaseConfig)
-  firebase.database().ref('/forms').on('value', (snapshot) => {
+  firebase.database().ref(path).on('value', (snapshot) => {
     var remaining = snapshot.numChildren()
     q.drain = function() {
       if (!remaining) callback()
@@ -29,7 +31,7 @@ function forEachSubmission(handler, callback) {
 // actual script
 
 console.log('Fetching from:', firebaseConfig.databaseURL, '...')
-forEachSubmission((task, next) => {
+forEachSubmission(path, (task, next) => {
   console.log(task)
   next()
 }, function done() {
