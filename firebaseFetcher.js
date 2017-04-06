@@ -1,17 +1,8 @@
 const async = require('async')
 const firebase = require('firebase')
 
-var firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  databaseURL: process.env.FIREBASE_DATA_URL,
-}
-
-const path = process.env.FIREBASE_DATA_PATH || '/'
-
-// helpers
-
-function forEachSubmission(path, handler, callback) {
-  var q = async.queue(handler, 1) // handler(task, callnext) will be called for each child
+function forEachSubmission(firebaseConfig, path, handler, callback) {
+  var q = async.queue(handler) // handler(task, callnext) will be called for each child
   //q.push({name: 'foo', code1: 'console.log("test", 666)'}) // for testing
   firebase.initializeApp(firebaseConfig)
   firebase.database().ref(path).on('value', (snapshot) => {
@@ -28,13 +19,6 @@ function forEachSubmission(path, handler, callback) {
   })
 }
 
-// actual script
-
-console.log('Fetching from:', firebaseConfig.databaseURL, '...')
-forEachSubmission(path, (task, next) => {
-  console.log(task)
-  next()
-}, function done() {
-  console.log()
-  process.exit()
-})
+module.exports = {
+  forEachSubmission,
+}

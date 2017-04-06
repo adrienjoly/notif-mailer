@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node run.js",
-    "test": "node test.js"
+    "test": "node run.js --dry-run"
   },
   "author": "Adrien Joly <contact@adrienjoly.com>",
   "license": "MIT",
