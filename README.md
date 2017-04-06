@@ -6,7 +6,7 @@ Service that sends notification emails, from a Firebase queue.
 
 After deploying and setting up this script to your favorite server (e.g. a Heroku instance), the `run.js` script is meant to be run every 10 minutes, and will:
 
-1. Fetch the pending notifications from the associate Firebase database;
+1. Fetch the pending notifications from the associated Firebase database;
 2. Email and remove the expected notifications (due from now).
 
 I wrote this script for the "Clear" project.
