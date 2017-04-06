@@ -2,18 +2,20 @@
   "name": "notif-mailer",
   "version": "0.2.0",
   "description": "Service that sends notification emails, from a Firebase queue.",
-  "main": "run.js",
+  "main": "index.js",
   "engines": {
     "node": "6.6.0",
     "npm": "3.10.3"
   },
   "dependencies": {
     "async": "^2.2.0",
+    "connect": "^3.6.0",
     "firebase": "^3.7.4",
     "sendgrid": "^2.0.0"
   },
   "scripts": {
-    "start": "node run.js",
+    "start": "node index.js # because heroku wants a web server to not think the app crashed",
+    "run-job": "node run.js",
     "test-with-data": "node test-sample-email.js && node run.js --dry-run",
     "test": "node run.js --dry-run"
   },
