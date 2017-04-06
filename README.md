@@ -14,13 +14,12 @@ I wrote this script for the "Clear" project.
 ## Setup
 
 1. Clone this repository locally, then `npm install`;
-2. Create a Firebase database;
-3. Fill your Firebase credentials in the `run.sh` file (or environment variables);
-5. Create a [Sendgrid account](https://sendgrid.com) => fill the API key the `run.sh` file, when provided;
-6. Then, fill the `EMAIL_FROM` and `EMAIL_TO` fields of `run.sh`;
-7. Run `npm test` locally, it will store a sample notification in your Firebase database, and display the corresponding notification email that would be sent (using `--dry-run` toggle);
-8. When the test works, run `run.sh` (without the `--dry-run` argument) => you should receive that email within 5 minutes, given your Sendgrid account was provisionned.
-9. Now you can push all that to your favorite web server or hosting service, and configure it so that `run.sh` is run every day, at the time of your choice. If, like me, you decide to use [Heroku](http://heroku.com), you can use the [Scheduler addon](https://scheduler.heroku.com). Otherwise, a `cron` script should work.
+2. Create a Firebase database => fill your Firebase credentials in the `run.sh` file;
+3. Run `npm test` locally, it will store a sample notification in your Firebase database, and display the corresponding notification email that would be sent (using `--dry-run` toggle);
+4. Create a [Sendgrid account](https://sendgrid.com) => fill the API credentials in the `run.sh` file;
+5. Then, fill the `EMAIL_FROM` and `EMAIL_TO` fields of `run.sh`;
+6. When the test works, run `run.sh` (without the `--dry-run` argument) => you should receive that email within 5 minutes, given your Sendgrid account was provisionned.
+7. Now you can push all that to your favorite web server or hosting service, and configure it so that `run.sh` is run every day, at the time of your choice. If, like me, you decide to use [Heroku](http://heroku.com), you can use the [Scheduler addon](https://scheduler.heroku.com). Otherwise, a `cron` script should work.
 
 ## Required environment variables
 
