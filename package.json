@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "node run.js",
+    "test-with-data": "node test-sample-email.js && node run.js --dry-run",
     "test": "node run.js --dry-run"
   },
   "author": "Adrien Joly <contact@adrienjoly.com>",
