@@ -24,6 +24,8 @@ I wrote this script for the "Clear" project.
 
 ## Required environment variables
 
+- `FIREBASE_API_KEY`: API key of your Firebase Database
+- `FIREBASE_DATA_URL`: URL of your Firebase Database (with `.firebaseio.com` suffix)
 - `SENDGRID_API_KEY`: [API key provided by Sendgrid](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) after creating your account
 - `EMAIL_FROM`: Email address from which daily emails will be sent
 - `EMAIL_TO`: Email address of the recipient (i.e. you, I guess)
