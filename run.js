@@ -48,19 +48,21 @@ setTimeout(() => {
 }, TIMEOUT_MS)
 
 console.log('Fetching from:', firebaseConfig.databaseURL + path, '...')
-firebaseFetcher.forEachSubmission(firebaseConfig, path, (task, next) => {
-  const email = {
-    subject: '(object)',
-    text: JSON.stringify(task, null, 2),
-  }
-  sendEmail(email, (err) => {
-    if (err) {
-      console.error('=> /!\\ ERROR:', err)
-    } else if (!dryRun) {
-      console.log('=> email sent to:', EMAIL_TO + '.')
-    }
+firebaseFetcher.forEachSubmission(firebaseConfig, path, (email, next) => {
+  const deliveryDate = new Date(email.when)
+  if (deliveryDate <= new Date()) {
+    sendEmail(email, (err) => {
+      if (err) {
+        console.error('=> /!\\ ERROR:', err)
+      } else if (!dryRun) {
+        console.log('=> email sent to:', EMAIL_TO + '.')
+      }
+      next() // process next email
+    })
+  } else {
+    console.info('(i) email', email.key, ' to be delivered on', deliveryDate, '=> skipping.')
     next() // process next email
-  })
+  }
 }, function done() {
   console.log('done.')
   process.exit()
