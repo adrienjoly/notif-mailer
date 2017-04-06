@@ -7,6 +7,10 @@ function forEachSubmission(firebaseConfig, path, handler, callback) {
   firebase.initializeApp(firebaseConfig)
   firebase.database().ref(path).once('value', (snapshot) => {
     var remaining = snapshot.numChildren()
+    if (remaining === 0) {
+      callback()
+      return
+    }
     q.drain = function() {
       if (!remaining) callback()
     } // TODO: move to parent function?
