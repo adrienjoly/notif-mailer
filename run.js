@@ -54,10 +54,16 @@ firebaseFetcher.forEachSubmission(firebaseConfig, path, (email, next) => {
     sendEmail(email, (err) => {
       if (err) {
         console.error('=> /!\\ ERROR:', err)
-      } else if (!dryRun) {
+        next() // process next email
+      } else if (dryRun) {
+        next() // process next email
+      } else {
         console.log('=> email sent to:', EMAIL_TO + '.')
+        email.delete((err) => {
+          console.log('=>', err || ('deleted email: ' + path + '/' + email.key))
+          next() // process next email
+        })
       }
-      next() // process next email
     })
   } else {
     console.info('(i) email', email.key, ' to be delivered on', deliveryDate, '=> skipping.')

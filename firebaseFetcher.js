@@ -13,6 +13,9 @@ function forEachSubmission(firebaseConfig, path, handler, callback) {
     snapshot.forEach(function(child) {
       var obj = child.val()
       obj.key = child.key
+      obj.delete = function(callback) {
+        firebase.database().ref(path + '/' + obj.key).remove(callback)
+      }
       q.push(obj)
       --remaining
     })
